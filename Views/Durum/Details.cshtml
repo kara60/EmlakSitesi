@@ -1,0 +1,26 @@
+﻿@model EmlakProject.Models.Durum
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Durum</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DurumName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DurumName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DurumId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

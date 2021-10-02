@@ -1,0 +1,55 @@
+﻿@model EmlakProject.Models.City
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="container-fluid">
+    <div class="row mx-5 mt-3">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6 my-5">
+            <div class="card p-5 mb-5 mx-auto" style="width:900px;">
+                <h3 class="text-dark mx-auto">
+                    <i class="fas fa-home"></i>
+                    Şehir Ekleme
+                </h3>
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/Admin/Index">Admin Sayfası</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Şehir Ekleme</li>
+                    </ol>
+                    <hr />
+                </nav>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="row">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <label class="col-sm-2 control-label fw-bold">Şehir Adı:</label>
+                        <div class="col-sm-6">
+                            @Html.EditorFor(model => model.CityName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CityName, "", new { @class = "text-danger" })
+                        </div>
+
+
+
+                    </div>
+                    <div class="form-group mt-2">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Ekle" class="btn btn-success" />
+                            @Html.ActionLink("Şehir Listesi", "Index", null, new { @class = "btn btn-warning" })
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+        <div class="col-sm-3">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container-fluid">
+    <div class="row mx-5 mt-3">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6 my-5">
+            <div class="card p-5 pt-0 mb-5 mx-auto" style="width:800px; height:850px;">
+                <img src="~/Content/images/logo.bmp" class="" style="width:700px;">
+                <h4 class="text-dark mx-auto mb-1">
+                    Admin Paneli
+                </h4>
+                <hr />
+                <div class="row">
+                    <div class="col-md-3 mt-2">
+                        <div class="img-thumbnail">
+                            <center>
+                                <img src="~/Content/images/analiz.jpg" class="mb-2 mt-2" style="height:50px;" />
+                            </center>
+
+                            <p>@Html.ActionLink("Şehir Listesi", "Index", "City", null, new { @class = "btn btn-success w-100" })</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-3 mt-2">
+                        <div class="img-thumbnail ">
+                            <center>
+                                <img src="~/Content/images/analiz.jpg" class="mb-2 mt-2" style="height:50px;" />
+                            </center>
+
+                            <p>@Html.ActionLink("Semt Listesi", "Index", "Semt", null, new { @class = "btn btn-primary w-100" })</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 mt-2">
+                        <div class="img-thumbnail ">
+                            <center>
+                                <img src="~/Content/images/analiz.jpg" class="mb-2 mt-2" style="height:50px;" />
+                            </center>
+
+                            <p>@Html.ActionLink("Mahalle Listesi", "Index", "Mahalle", null, new { @class = "btn btn-warning w-100" })</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 mt-2">
+                        <div class="img-thumbnail ">
+                            <center>
+                                <img src="~/Content/images/analiz.jpg" class="mb-2 mt-2" style="height:50px;" />
+                            </center>
+
+                            <p>@Html.ActionLink("Durum Listesi", "Index", "Durum", null, new { @class = "btn btn-info w-100" })</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 mt-2">
+                        <div class="img-thumbnail ">
+                            <center>
+                                <img src="~/Content/images/analiz.jpg" class="mb-2 mt-2" style="height:50px;" />
+                            </center>
+
+                            <p>@Html.ActionLink("Tip Listesi", "Index", "Tip", null, new { @class = "btn btn-secondary w-100" })</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mt-2">
+                        <div class="img-thumbnail ">
+                            <center>
+                                <img src="~/Content/images/analiz.jpg" class="mb-2 mt-2" style="height:50px;" />
+                            </center>
+
+                            <p>@Html.ActionLink("İlan Listesi", "IlanListesi", "Admin", null, new { @class = "btn btn-success w-100" })</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="col-sm-3">
+        </div>
+    </div>
+</div>
+

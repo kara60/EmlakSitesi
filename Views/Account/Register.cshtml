@@ -1,0 +1,94 @@
+﻿@model EmlakProject.Models.Register
+@{
+    ViewBag.Title = "Register";
+}
+
+<div class="container-fluid">
+    <div class="row mx-5 mt-3">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6 my-5">
+            <div class="card p-5 pt-0 mb-5 mx-auto" style="width:700px;">
+                <img src="~/Content/images/logo.bmp" class="" style="width:600px;">
+                <h4 class="text-dark mx-auto mb-1">
+
+
+                    Kayıt Ol
+                </h4>
+                <hr />
+
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", autocomplete = "off" }))
+                {
+                    <div class="row mb-2">
+                        <label for="inputEmail3" class="col-sm-4 control-label fw-bold">Adınız:</label>
+                        <div class="col-sm-8">
+                            @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label for="inputEmail3" class="col-sm-4 control-label fw-bold">Soyadınız:</label>
+                        <div class="col-sm-8">
+                            @Html.EditorFor(m => m.Surname, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.Surname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label for="inputEmail3" class="col-sm-4 control-label fw-bold">Kullanıcı Adınız:</label>
+                        <div class="col-sm-8">
+                            @Html.EditorFor(m => m.Username, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label for="inputEmail3" class="col-sm-4 control-label fw-bold">Email:</label>
+                        <div class="col-sm-8">
+                            @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label for="inputEmail3" class="col-sm-4 control-label fw-bold">Şifreniz:</label>
+                        <div class="col-sm-8">
+                            @Html.EditorFor(m => m.Password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label for="inputEmail3" class="col-sm-4 control-label fw-bold">Şifreniz Tekrar:</label>
+                        <div class="col-sm-8">
+                            @Html.EditorFor(m => m.RePassword, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                            @Html.ValidationMessageFor(m => m.RePassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-check mt-3">
+                        <input class="form-check-input" type="checkbox" value="" id="registerCheck">
+                        <label class="form-check-label" for="registerCheck">
+                            Üyelik Şartlarını <a href="#">Buradan Okudum</a> ve Kabul Ediyorum.
+                        </label>
+                    </div>
+                    <br />
+
+                    <button type="submit" id="registerButton" class="btn btn-primary w-100 btn-block" disabled><i class="fas fa-users"></i> Kayıt Ol</button>
+                    <a href="/Account/Register2" class="btn btn-warning w-100 mt-3">Kurumsal Üyelik için tıkla.</a>
+                }
+            </div>
+        </div>
+        <div class="col-sm-3">
+        </div>
+    </div>
+</div>
+
+<script>
+    const registerCheck = document.querySelector('#registerCheck');
+    const registerButton = document.querySelector('#registerButton');
+
+    registerCheck.addEventListener('click', () => {
+        if (!registerCheck.checked) {
+            registerButton.disabled = true;
+        } else {
+            registerButton.disabled = false;
+        }
+    });
+</script>

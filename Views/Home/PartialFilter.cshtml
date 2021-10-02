@@ -1,0 +1,121 @@
+﻿
+@model EmlakProject.Models.Ilan
+
+<div class="col-sm-3">
+    <div class="card p-3">
+        <h4>
+            <i class="fab fa-searchengin fa-lg"></i>
+            Hızlı Arama..
+        </h4>
+        <hr />
+        <!--Filtreleme Kısmı-->
+        @using (Html.BeginForm("Filter", "Home", FormMethod.Get, new { @class = "form-horizontal" }))
+        {
+            <div class="row mb-3">
+                <div class="col-sm-12">
+                    <input type="text" name="min" class="form-control fw-bold" placeholder="En Az (Fiyat)" autocomplete="off">
+                </div>
+            </div>
+            <div class="row mb-3">
+
+                <div class="col-sm-12">
+                    <input type="text" name="max" class="form-control fw-bold" placeholder="En Çok (Fiyat)" autocomplete="off">
+                </div>
+            </div>
+            <div class="row mb-3">
+
+                <div class="col-sm-12">
+                    @if (ViewBag.citylist != null)
+                    {
+                        @Html.DropDownListFor(m => m.CityId, ViewBag.citylist as SelectList, "Şehir Seç", new { @class = "form-control mb-3" });
+                    }
+                </div>
+            </div>
+            <div class="row mb-3">
+
+                <div class="col-sm-12">
+                    @Html.DropDownListFor(m => m.SemtId, new SelectList(""), "Semt Seç", new { @class = "form-control mb-3 mb-3" })
+                </div>
+            </div>
+            <div class="row mb-3">
+
+                <div class="col-sm-12">
+                    @Html.DropDownListFor(m => m.MahalleId, new SelectList(""), "Mahalle Seç", new { @class = "form-control mb-3" })
+                </div>
+            </div>
+            <div class="row mb-3">
+
+                <div class="col-sm-12">
+                    @if (ViewBag.durumlist != null)
+                    {
+                        @Html.DropDownListFor(m => m.DurumId, ViewBag.durumlist as SelectList, "Durum Seç", new { @class = "form-control mb-3" })
+                    }
+                </div>
+            </div>
+            <div class="row mb-3">
+
+                <div class="col-sm-12">
+                    @Html.DropDownListFor(m => m.TipId, new SelectList(""), "Tip Seç", new { @class = "form-control mb-3" })
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 btn-block"><i class="fas fa-search"></i> Filtrele</button>
+        }
+    </div>
+</div>
+
+<script src="~/scripts/jquery-3.6.0.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#CityId").change(function () {
+            var cityid = $(this).val(); //Seçilen şehrin id sini kullanarak ilan controller içerisindeki getsemt metodunu çağırıyorum.
+            debugger
+            $.ajax({
+                type: "Post",
+                url: "/Ilan/GetSemt?CityId=" + cityid, //city ile semti birbirine bağladık.
+                contentType: "html",
+                success: function (response) {
+                    debugger
+                    $("#SemtId").empty();
+                    $("#SemtId").append(response);
+                }
+            })
+        })
+    })
+</script>
+<script>
+    $(document).ready(function () {
+        $("#SemtId").change(function () {
+            var semtid = $(this).val(); //Seçilen semtin id sini kullanarak ilan controller içerisindeki getsemt metodunu çağırıyorum.
+            debugger
+            $.ajax({
+                type: "Post",
+                url: "/Ilan/GetMahalle?SemtId=" + semtid, //city ile semti birbirine bağladık.
+                contentType: "html",
+                success: function (response) {
+                    debugger
+                    $("#MahalleId").empty();
+                    $("#MahalleId").append(response);
+                }
+            })
+        })
+    })
+</script>
+<script>
+    $(document).ready(function () {
+        $("#DurumId").change(function () {
+            var durumid = $(this).val(); //Seçilen şehrin id sini kullanarak ilan controller içerisindeki getsemt metodunu çağırıyorum.
+            debugger
+            $.ajax({
+                type: "Post",
+                url: "/Ilan/GetTip?DurumId=" + durumid, //city ile semti birbirine bağladık.
+                contentType: "html",
+                success: function (response) {
+                    debugger
+                    $("#TipId").empty();
+                    $("#TipId").append(response);
+                }
+            })
+        })
+    })
+</script>

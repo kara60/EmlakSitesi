@@ -1,0 +1,78 @@
+﻿@model IEnumerable<EmlakProject.Models.Ilan>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container-fluid">
+    <div class="row mx-5 mt-3">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6 my-5">
+            <div class="card p-5 mb-5 mx-auto" style="width:900px;">
+                <h3 class="text-primary mx-auto">
+                    <i class="fas fa-home"></i>
+                    Kara Emlak / İlanlarım
+                </h3>
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/Home/Index">Anasayfa</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">İlan Listesi</li>
+                    </ol>
+                    <hr />
+                </nav>
+
+                <table class="table table-secondary table-striped mt-4">
+                    <tr>
+                        <th>
+                            Mahalle
+                        </th>
+                        <th>
+                            Tip
+                        </th>
+                        <th>
+                            Şehir
+                        </th>
+                        <th>
+                            Semt
+                        </th>
+                        <th>
+                            Durum
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mahalle.MahalleName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tip.TipName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mahalle.Semt.City.CityName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Mahalle.Semt.SemtName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tip.Durum.DurumName)
+                            </td>
+                            <td>
+                                <a class="btn btn-success" href="@Url.Action("Images", new { id = item.IlanId })"><i class="fas fa-camera"></i> Resim Ekle</a>
+                                <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.IlanId })"><i class="fas fa-edit"></i> Düzenle</a>
+                                <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.IlanId })"><i class="fas fa-trash"></i> Sil</a>
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+        <div class="col-sm-3">
+        </div>
+    </div>
+</div>

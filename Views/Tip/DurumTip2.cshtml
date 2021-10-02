@@ -1,0 +1,5 @@
+﻿@model IEnumerable<EmlakProject.Models.Tip>
+@foreach (var item in Model)
+{
+    <li><a class="dropdown-item" href="/Home/MenuFilter/@item.TipId">@item.TipName</a></li>
+}

@@ -1,0 +1,114 @@
+﻿@model IEnumerable<EmlakProject.Models.Ilan>
+@{
+    ViewBag.Title = "Search";
+}
+
+<div class="container-fluid m-0 p-0">
+    <div class="container-fluid">
+        <div class="row mx-5 mt-3">
+            <div class="col-sm-3">
+                <div class="card p-3">
+                    <!--Filtreleme Kısmı-->
+                    <h4>
+                        <i class="fab fa-searchengin fa-lg"></i>
+                        Hızlı Arama..
+                    </h4>
+                    <hr />
+                    <form class="form-horizontal">
+                        <div class="row mb-3">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control fw-bold" placeholder="En Az (Fiyat)">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control fw-bold" placeholder="En Çok (Fiyat)">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control fw-bold" placeholder="Şehir">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control fw-bold" placeholder="Semt">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control fw-bold" placeholder="Mahalle">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control fw-bold" placeholder="Durum">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control fw-bold" placeholder="Tip">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 btn-block"><i class="fas fa-search"></i> Filtrele</button>
+
+
+                    </form>
+                </div>
+
+            </div>
+            <div class="col-sm-9">
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        var i = 1;
+                        <div class="col-sm-3 mb-2">
+                            <div class="card" style="width: 18rem;">
+                                @foreach (var img in ViewBag.imgs)
+                                {
+                                    if (img.IlanId == item.IlanId)
+                                    {
+                                        if (@i == 1)
+                                        {
+                                            <img src="../Content/images/@img.ImageName" class="card-img-top" style="height:300px;" alt="@img.ImageName">
+                                            i++;
+                                        }
+
+                                    }
+                                }
+
+                                <div class="card-body">
+                                    <h5 class="card-title"><strong>@item.Tip.Durum.DurumName</strong> (@item.Tip.TipName)</h5>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">@item.Mahalle.Semt.City.CityName - @item.Mahalle.Semt.SemtName</li>
+                                    <li class="list-group-item">
+                                        <button class="btn btn-primary w-auto">@item.Alan m<sup>2</sup></button>
+                                        <span>-</span>
+                                        <button class="btn btn-warning w-auto"><i class="fas fa-bed"></i> @item.NumberOfRooms Oda</button>
+                                    </li>
+                                </ul>
+                                <div class="card-body">
+                                    <a class="btn btn-success w-100 mb-1">@item.Price ₺</a>
+                                    <a class="btn btn-secondary w-100" href="/Home/Details/@item.IlanId"><i class="fas fa-external-link-alt"></i> İlana Git</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
