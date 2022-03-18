@@ -1,2 +1,2 @@
 # EmlakSitesi
-ASP.NET MVC kullanarak yapılmış bir Emlak Sitesi
+ASP.NET MVC kullanarak yapmış olduğum bir Emlak Sitesi
